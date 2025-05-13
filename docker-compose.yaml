@@ -1,13 +1,6 @@
 version: '3'
 services:
-  employee-assist-aos-agent-server:
+  app:
     build: .
-    container_name: cicd
-    restart: always
     ports:
-      - "3000:3000"  # Map the port 3000 of the container to port 3000 on the host
-    volumes:
-      - ./:/cicd/
-    working_dir: /cicd
-    command: >
-      sh -c "node index.js"  # This starts your app
+      - "3000:3000"
