@@ -1,24 +1,12 @@
 version: '3'
 services:
-  employee-assist-aos-agent-server:
-      build: .
-      # image: node_18_ubuntu
-      network_mode: "host"
-      container_name: cicd
-      restart: always
-      ports:
-        - "3000:3000"
-       
-      volumes:
-        - ./:/cicd/
-
-      command:
-        - /bin/bash
-        - -c
-        - |
-
-          cd /cicd/
-          # npm install 
-
-          npm start
-        
+  cicd:
+    build: .
+    container_name: cicd
+    restart: always
+    network_mode: "host"  # Use this if you want host networking
+    volumes:
+      - ./:/cicd/
+    working_dir: /cicd
+    command: >
+      sh -c "node index.js"
