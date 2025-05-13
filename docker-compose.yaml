@@ -1,14 +1,13 @@
 version: '3'
 services:
-  cicd:
+  employee-assist-aos-agent-server:
     build: .
     container_name: cicd
     restart: always
-    network_mode: "host"  # Use this if you want host networking
+    ports:
+      - "3000:3000"  # Map the port 3000 of the container to port 3000 on the host
     volumes:
       - ./:/cicd/
     working_dir: /cicd
     command: >
-      command: >
-          sh -c "npm install && npm start"
-
+      sh -c "node index.js"  # This starts your app
