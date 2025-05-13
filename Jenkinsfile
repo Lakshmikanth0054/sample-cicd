@@ -13,10 +13,10 @@ pipeline {
             steps {
                 script {
                     // Change to the directory where docker-compose.yml is located
-                    dir('cicd') {
+                 
                         // Run docker-compose to bring up the services
                         sh 'docker-compose up -d'
-                    }
+                    
                 }
             }
         }
