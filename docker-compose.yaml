@@ -9,4 +9,6 @@ services:
       - ./:/cicd/
     working_dir: /cicd
     command: >
-      sh -c "node index.js"
+      command: >
+          sh -c "npm install && npm start"
+
