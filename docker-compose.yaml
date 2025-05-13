@@ -1,0 +1,24 @@
+version: '3'
+services:
+  employee-assist-aos-agent-server:
+      build: .
+      # image: node_18_ubuntu
+      network_mode: "host"
+      container_name: cicd
+      restart: always
+      # ports:
+      #   - "8001:8001"
+       
+      volumes:
+        - ./:/cicd/
+
+      command:
+        - /bin/bash
+        - -c
+        - |
+
+          cd /cicd/
+          # npm install 
+
+          npm start
+        
