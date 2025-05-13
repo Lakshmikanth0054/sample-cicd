@@ -2,31 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        
+
+        stage('Verify docker-compose.yml Exists') {
             steps {
-                // Pull code from GitHub
-                git 'https://github.com/Lakshmikanth0054/sample-cicd.git'
+                // List contents of the cicd folder to verify the YAML file is there
+                sh 'ls -l cicd'
             }
         }
 
-        stage('Docker Compose Up') {
+        stage('Run Docker Compose') {
             steps {
-                script {
-                    // Change to the directory where docker-compose.yml is located
-                 
-                        // Run docker-compose to bring up the services
-                        sh 'docker-compose up -d'
-                    
-                }
+                // Run docker-compose from inside the cicd folder
+                sh 'docker-compose -f cicd/docker-compose.yml up -d'
             }
         }
     }
 
     post {
         always {
-            // Handle any post-build steps (e.g., cleanup)
-            echo 'Build complete'
+            echo 'Pipeline completed.'
         }
     }
 }
-
