@@ -6,5 +6,5 @@ RUN apt-get install -y nodejs
 
 WORKDIR /cicd/
 # RUN npm install axios
-EXPOSE 8003
+EXPOSE 3000
 CMD npm start
